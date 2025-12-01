@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://ct1pbrlq3y6cr"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ogbbm"]
+[ext_resource type="PackedScene" uid="uid://dnrcrqsmd83vw" path="res://player.tscn" id="3_fqj6f"]
+[ext_resource type="PackedScene" uid="uid://dvupvyiysl21i" path="res://ground_parent.tscn" id="3_vmfmi"]
+[ext_resource type="Script" path="res://obstacle_spawner.gd" id="4_lkbf5"]
+[ext_resource type="PackedScene" uid="uid://ckwke1uj10oc3" path="res://engel_1.tscn" id="5_ju765"]
+[ext_resource type="PackedScene" uid="uid://b8bc5fpbb6ata" path="res://engel_2.tscn" id="6_mqwa6"]
+[ext_resource type="FontFile" uid="uid://clux6j28adah3" path="res://megamax-jonathan-too-font/MegamaxJonathanToo-YqOq2.ttf" id="6_v82kp"]
+[ext_resource type="PackedScene" uid="uid://qhaphbfhn37i" path="res://engel_3.tscn" id="7_rnyko"]
+
+[node name="main" type="Node2D"]
+position = Vector2(157, 12)
+script = ExtResource("1_ogbbm")
+
+[node name="player" parent="." instance=ExtResource("3_fqj6f")]
+position = Vector2(-282, 578)
+
+[node name="GroundParent" parent="." instance=ExtResource("3_vmfmi")]
+position = Vector2(-202, -10)
+
+[node name="ObstacleSpawner" type="Node2D" parent="."]
+script = ExtResource("4_lkbf5")
+obstacle_scenes = Array[PackedScene]([ExtResource("5_ju765"), ExtResource("6_mqwa6"), ExtResource("7_rnyko")])
+
+[node name="BackButton" type="Button" parent="."]
+process_mode = 3
+offset_left = -140.0
+offset_top = -7.0
+offset_right = -85.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.988235, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+text = "BACK"
+flat = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="pausepanel" type="Panel" parent="UI"]
+offset_left = 86.0
+offset_top = 47.0
+offset_right = 372.0
+offset_bottom = 240.0
+
+[node name="menubut" type="Button" parent="UI/pausepanel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 81.0
+offset_top = 59.0
+offset_right = 194.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.980392, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+text = "MAIN MENU"
+flat = true
+
+[node name="retbut" type="Button" parent="UI/pausepanel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 102.0
+offset_top = 89.0
+offset_right = 180.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0.972549, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+text = "return"
+flat = true
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = 5.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.784314, 0.92549, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+
+[node name="GameOverPanel" type="VBoxContainer" parent="UI"]
+offset_left = 429.0
+offset_top = 270.0
+offset_right = 690.0
+offset_bottom = 399.0
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+theme_override_font_sizes/font_size = 30
+text = " GAME OVER"
+
+[node name="SurvivedLabel" type="Label" parent="UI/GameOverPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+horizontal_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="UI/GameOverPanel"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.960784, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+text = "restart"
+flat = true
+
+[node name="pause" type="Button" parent="."]
+process_mode = 3
+offset_left = -70.0
+offset_top = -9.0
+offset_right = -15.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_v82kp")
+text = "pause"
+flat = true
+
+[connection signal="pressed" from="UI/pausepanel/menubut" to="." method="_on_menubut_pressed"]
+[connection signal="pressed" from="UI/pausepanel/retbut" to="." method="_on_retbut_pressed"]
+[connection signal="button_down" from="UI/GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_button_down"]
+[connection signal="button_up" from="UI/GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_button_up"]
+[connection signal="pressed" from="UI/GameOverPanel/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]

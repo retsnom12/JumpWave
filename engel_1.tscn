@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckwke1uj10oc3"]
+
+[ext_resource type="Script" path="res://Obstacle.gd" id="1_5flci"]
+[ext_resource type="Texture2D" uid="uid://dxo2ijbej35s8" path="res://asstsss/engeller.png" id="1_eb7wo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtmoh"]
+size = Vector2(61, 72)
+
+[node name="Engel1" type="Node2D" groups=["obstacle"]]
+script = ExtResource("1_5flci")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["obstacle"]]
+
+[node name="Engeller" type="Sprite2D" parent="CharacterBody2D" groups=["obstacle"]]
+position = Vector2(1094.5, 608)
+scale = Vector2(0.0824324, 0.151261)
+texture = ExtResource("1_eb7wo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["obstacle"]]
+position = Vector2(1094.5, 608)
+shape = SubResource("RectangleShape2D_vtmoh")
+
+[node name="BitisNoktasi" type="Marker2D" parent="."]
+position = Vector2(1126, 635)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhaphbfhn37i"]
+
+[ext_resource type="Script" path="res://Obstacle.gd" id="1_wgide"]
+[ext_resource type="Texture2D" uid="uid://dxo2ijbej35s8" path="res://asstsss/engeller.png" id="2_q0toh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1tic"]
+size = Vector2(83.5, 51.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtu6o"]
+size = Vector2(87, 422)
+
+[node name="engel_3" type="Node2D" groups=["obstacle"]]
+script = ExtResource("1_wgide")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["obstacle"]]
+
+[node name="Engeller2" type="Sprite2D" parent="CharacterBody2D" groups=["obstacle"]]
+position = Vector2(1065.75, 622.5)
+scale = Vector2(0.112162, 0.105042)
+texture = ExtResource("2_q0toh")
+
+[node name="Engeller" type="Sprite2D" parent="CharacterBody2D" groups=["obstacle"]]
+position = Vector2(1060.75, 288.5)
+scale = Vector2(0.11554, 0.888655)
+texture = ExtResource("2_q0toh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" groups=["obstacle"]]
+position = Vector2(1065.75, 622.875)
+shape = SubResource("RectangleShape2D_i1tic")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D" groups=["obstacle"]]
+position = Vector2(1061.25, 289.5)
+shape = SubResource("RectangleShape2D_vtu6o")
+
+[node name="BitisNoktasi" type="Marker2D" parent="."]
+position = Vector2(1109.75, 614.5)

@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://7dkx6odkfrtv"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_kkes5"]
+[ext_resource type="FontFile" uid="uid://clux6j28adah3" path="res://megamax-jonathan-too-font/MegamaxJonathanToo-YqOq2.ttf" id="1_ljb1v"]
+[ext_resource type="AudioStream" uid="uid://drpt1qai4fa4o" path="res://emotional-piano-438664.mp3" id="3_s1n5c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_461dy"]
+bg_color = Color(0.911703, 0.456592, 1.34766e-06, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_kkes5")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StartButton" type="Button" parent="UI"]
+process_mode = 3
+offset_left = 429.0
+offset_top = 259.0
+offset_right = 685.0
+offset_bottom = 306.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ljb1v")
+theme_override_font_sizes/font_size = 20
+text = "LET'S PLAY A SONG"
+flat = true
+
+[node name="HelpButton" type="Button" parent="UI"]
+offset_left = 489.0
+offset_top = 333.0
+offset_right = 618.0
+offset_bottom = 374.0
+theme_override_colors/font_color = Color(0.972549, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_ljb1v")
+theme_override_font_sizes/font_size = 20
+text = "HELP"
+flat = true
+
+[node name="AboutButton" type="Button" parent="UI"]
+offset_left = 503.0
+offset_top = 302.0
+offset_right = 605.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_ljb1v")
+theme_override_font_sizes/font_size = 20
+text = "ABOUT
+"
+flat = true
+
+[node name="HelpPanel" type="Panel" parent="UI"]
+offset_left = 21.0
+offset_top = 275.0
+offset_right = 447.0
+offset_bottom = 607.0
+
+[node name="HelpText" type="RichTextLabel" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 35.0
+offset_right = 371.0
+offset_bottom = 300.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_ljb1v")
+text = "Welcome to Jump Wave!
+Hey there! You’re a pianist stuck in an orange box, and your mission is simple: survive! Use your music and sound waves to dodge obstacles and keep moving.
+Each key from 1 to 8 plays a different note:
+1 = Do
+2 = Re
+3 = Mi
+4 = Fa
+5 = Sol
+6 = La
+7 = Si
+8 = High Do.
+Play around with melodies—every note might trigger a surprise. Stay sharp, have fun, and let the music guide you!"
+
+[node name="BackButton" type="Button" parent="UI/HelpPanel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 61.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.988235, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_ljb1v")
+text = "BACK"
+flat = true
+
+[node name="AboutPanel" type="Panel" parent="UI"]
+offset_left = 664.0
+offset_top = 270.0
+offset_right = 1112.0
+offset_bottom = 600.0
+
+[node name="AboutText" type="RichTextLabel" parent="UI/AboutPanel"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 36.0
+offset_right = 399.0
+offset_bottom = 293.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_ljb1v")
+text = "About the Creator
+Hi! It’s Hanin :)
+I’m a 4th-year Computer Engineering student who’s totally in love with games, music, and a little bit of chaos.
+I enjoy creating fun little experiences that make people smile, laugh, or even dance a bit.
+Jump Wave is my tiny playground where sound waves, rhythm, and imagination collide in a hopefully fun way.
+Thanks for playing, and maybe you’ll catch a glimpse of my quirky creativity along the way!"
+
+[node name="BackButton" type="Button" parent="UI/AboutPanel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 61.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.988235, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_ljb1v")
+text = "BACK"
+flat = true
+
+[node name="GameName" type="Label" parent="UI"]
+offset_left = 368.0
+offset_top = 184.0
+offset_right = 770.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(1, 0.960784, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ljb1v")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_461dy")
+text = "Jump Wave"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="UI"]
+
+[node name="Emotional-piano-438664" type="AudioStreamPlayer" parent="UI/BackgroundMusic"]
+stream = ExtResource("3_s1n5c")

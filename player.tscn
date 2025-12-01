@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnrcrqsmd83vw"]
+
+[ext_resource type="Texture2D" uid="uid://c70btr4jntn8o" path="res://asstsss/chrctr.png" id="1_fejlx"]
+[ext_resource type="Script" path="res://player.gd" id="1_mc4gy"]
+[ext_resource type="Texture2D" uid="uid://klxcvecjvxan" path="res://asstsss/msc0.png" id="3_dhayk"]
+[ext_resource type="Texture2D" uid="uid://w78jiw43jkv" path="res://asstsss/msc1.png" id="4_63qlj"]
+[ext_resource type="Texture2D" uid="uid://bpeojv1jx5j80" path="res://asstsss/msc2.png" id="5_05g7j"]
+[ext_resource type="Texture2D" uid="uid://dyw6v72e2rht0" path="res://asstsss/msc3.png" id="6_dtko6"]
+[ext_resource type="Texture2D" uid="uid://dcqn5qgvbli0f" path="res://asstsss/msc5.png" id="7_mjk86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svfgv"]
+size = Vector2(41, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af6k8"]
+size = Vector2(49, 41.3125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whoqh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dhayk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_63qlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_05g7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dtko6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mjk86")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_mc4gy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167.5, 38)
+scale = Vector2(0.195652, 0.195349)
+texture = ExtResource("1_fejlx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(167, 37.5)
+shape = SubResource("RectangleShape2D_svfgv")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(168, 37.6563)
+shape = SubResource("RectangleShape2D_af6k8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(220, -9)
+scale = Vector2(0.149219, 0.117188)
+sprite_frames = SubResource("SpriteFrames_whoqh")
+autoplay = "default"
+frame_progress = 0.567443
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

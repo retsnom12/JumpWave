@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvupvyiysl21i"]
+
+[sub_resource type="GDScript" id="GDScript_rxft8"]
+script/source = "extends Node2D
+
+@export var speed := 200
+@export var ground_length := 1024   # ground uzunluğu (CollisionShape boyu)
+
+func _process(delta):
+	position.x -= speed * delta
+
+	for g in get_children():
+		var local_pos = g.position.x + position.x
+		if local_pos < -ground_length:
+			g.position.x += ground_length * 2
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c1ajf"]
+distance = -292.0
+
+[node name="GroundParent" type="Node2D"]
+position = Vector2(-6, -31)
+script = SubResource("GDScript_rxft8")
+
+[node name="Ground1" type="StaticBody2D" parent="."]
+position = Vector2(3, 3)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground1"]
+position = Vector2(121, 351)
+shape = SubResource("WorldBoundaryShape2D_c1ajf")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(3, 3)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(786, 356)
+shape = SubResource("WorldBoundaryShape2D_c1ajf")
